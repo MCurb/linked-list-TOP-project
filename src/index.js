@@ -14,6 +14,16 @@ class LinkedList {
     }
     this.append(value, lastNode.nextNode);
   }
+
+  prepend(value) {
+    const node = new Node(value);
+    if (this.head === null) {
+      this.head = node;
+      return;
+    }
+    node.nextNode = this.head;
+    this.head = node;
+  }
 }
 
 class Node {
@@ -28,5 +38,9 @@ console.log(list1.head);
 
 list1.append(52);
 list1.append(56);
-console.log(list1.head.value);
-console.log(list1.head.nextNode.value);
+list1.prepend('perra');
+list1.append('gata');
+console.log(list1.head);
+console.log(list1.head.nextNode);
+console.log(list1.head.nextNode.nextNode);
+console.log(list1.head.nextNode.nextNode.nextNode);
