@@ -50,6 +50,20 @@ class LinkedList {
 
     return this.tail(currentNode.nextNode);
   }
+
+  at(index) {
+    if (this.head === null) {
+      return this.head;
+    }
+    let currentNode = this.head;
+    for (let i = 0; i <= index - 1; i++) {
+      if (currentNode === null) {
+        return null;
+      }
+      currentNode = currentNode.nextNode;
+    }
+    return currentNode;
+  }
 }
 
 class Node {
@@ -74,3 +88,4 @@ console.log(list1.head.nextNode.nextNode.nextNode);
 console.log(list1.size());
 console.log(list1.headNode());
 console.log(list1.tail());
+console.log(list1.at(4));
