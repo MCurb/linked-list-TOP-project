@@ -39,6 +39,17 @@ class LinkedList {
   headNode() {
     return this.head;
   }
+
+  tail(currentNode = this.head) {
+    if (this.head === null) {
+      return this.head;
+    }
+    if (currentNode.nextNode === null) {
+      return currentNode;
+    }
+
+    return this.tail(currentNode.nextNode);
+  }
 }
 
 class Node {
@@ -62,3 +73,4 @@ console.log(list1.head.nextNode.nextNode);
 console.log(list1.head.nextNode.nextNode.nextNode);
 console.log(list1.size());
 console.log(list1.headNode());
+console.log(list1.tail());
