@@ -27,6 +27,7 @@ class LinkedList {
     this.head = node;
   }
 
+  //Return the total number of nodes
   size(currentNode = this.head) {
     let count = 0;
     if (currentNode === null) {
@@ -36,10 +37,12 @@ class LinkedList {
     return count + this.size(currentNode.nextNode);
   }
 
+  //Return the first node
   headNode() {
     return this.head;
   }
 
+  //Return the last node
   tail(currentNode = this.head) {
     if (this.head === null) {
       return this.head;
@@ -51,6 +54,7 @@ class LinkedList {
     return this.tail(currentNode.nextNode);
   }
 
+  //Return the node at a specified index
   at(index) {
     if (this.head === null) {
       return this.head;
@@ -63,6 +67,18 @@ class LinkedList {
       currentNode = currentNode.nextNode;
     }
     return currentNode;
+  }
+
+  //Remove the tail node
+  pop(currentNode = this.head) {
+    if (this.head === null) {
+      return;
+    }
+    if (currentNode.nextNode === this.tail()) {
+      currentNode.nextNode = null;
+      return;
+    }
+    this.pop(currentNode.nextNode);
   }
 }
 
@@ -87,5 +103,7 @@ console.log(list1.head.nextNode.nextNode);
 console.log(list1.head.nextNode.nextNode.nextNode);
 console.log(list1.size());
 console.log(list1.headNode());
+list1.pop();
+list1.pop();
 console.log(list1.tail());
 console.log(list1.at(4));
