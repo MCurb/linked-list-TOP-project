@@ -81,6 +81,21 @@ class LinkedList {
     }
     prevNode.nextNode = null;
   }
+
+  contains(value) {
+    if (this.head === null) {
+      return false;
+    }
+    let currentNode = this.head;
+    while (currentNode.value !== value && currentNode.nextNode !== null) {
+      currentNode = currentNode.nextNode;
+    }
+    if (currentNode.value === value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 class Node {
@@ -108,3 +123,4 @@ list1.pop();
 list1.pop();
 console.log(list1.tail());
 console.log(list1.at(4));
+console.log(list1.contains('gata'));
