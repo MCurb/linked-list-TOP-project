@@ -108,6 +108,20 @@ class LinkedList {
 
     return currentNode.value === value ? currentIndex : null;
   }
+
+  toString() {
+    if (this.head === null) {
+      return 'null';
+    }
+    let finalString = '';
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      finalString += `( ${currentNode.value} ) -> `;
+      currentNode = currentNode.nextNode;
+    }
+
+    return (finalString += 'null');
+  }
 }
 
 class Node {
@@ -132,9 +146,9 @@ console.log(list1.head.nextNode.nextNode.nextNode);
 console.log(list1.size());
 console.log(list1.headNode());
 list1.pop();
-list1.pop();
 console.log(list1.tail());
 console.log(list1.at(4));
 console.log(list1.contains('gata'));
 console.log(list1.find(52));
 console.log(list1.find('la caballota'));
+console.log(list1.toString());
