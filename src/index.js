@@ -1,6 +1,7 @@
 class LinkedList {
   head = null;
 
+  //Append a node to the tail of the list
   append(value, lastNode = this.head) {
     if (this.head === null) {
       const node = new Node(value);
@@ -15,6 +16,7 @@ class LinkedList {
     this.append(value, lastNode.nextNode);
   }
 
+  //Prepend node to the head of the list
   prepend(value) {
     const node = new Node(value);
     if (this.head === null) {
@@ -23,6 +25,15 @@ class LinkedList {
     }
     node.nextNode = this.head;
     this.head = node;
+  }
+
+  size(currentNode = this.head) {
+    let count = 0;
+    if (currentNode === null) {
+      return count;
+    }
+    count++;
+    return count + this.size(currentNode.nextNode);
   }
 }
 
@@ -40,7 +51,9 @@ list1.append(52);
 list1.append(56);
 list1.prepend('perra');
 list1.append('gata');
+list1.prepend('la caballota');
 console.log(list1.head);
 console.log(list1.head.nextNode);
 console.log(list1.head.nextNode.nextNode);
 console.log(list1.head.nextNode.nextNode.nextNode);
+console.log(list1.size());
