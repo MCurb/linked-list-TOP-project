@@ -19,10 +19,6 @@ class LinkedList {
   //Prepend node to the head of the list
   prepend(value) {
     const node = new Node(value);
-    if (this.head === null) {
-      this.head = node;
-      return;
-    }
     node.nextNode = this.head;
     this.head = node;
   }
@@ -70,15 +66,20 @@ class LinkedList {
   }
 
   //Remove the tail node
-  pop(currentNode = this.head) {
+  pop() {
     if (this.head === null) {
       return;
     }
-    if (currentNode.nextNode === this.tail()) {
-      currentNode.nextNode = null;
-      return;
+    let currentNode = this.head.nextNode;
+    let prevNode = this.head;
+
+    //If currentNode points to null it means it's
+    //the last node, then make the previous node point to null
+    while (currentNode.nextNode !== null) {
+      currentNode = currentNode.nextNode;
+      prevNode = prevNode.nextNode;
     }
-    this.pop(currentNode.nextNode);
+    prevNode.nextNode = null;
   }
 }
 
