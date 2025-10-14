@@ -94,6 +94,7 @@ class LinkedList {
     return currentNode.value === value ? true : false;
   }
 
+  //Return the index of the node containing the given value, or null if not found
   find(value) {
     if (this.head === null) {
       return null;
@@ -109,6 +110,7 @@ class LinkedList {
     return currentNode.value === value ? currentIndex : null;
   }
 
+  //Represent the LinkedList objects as strings
   toString() {
     if (this.head === null) {
       return 'null';
@@ -121,6 +123,41 @@ class LinkedList {
     }
 
     return (finalString += 'null');
+  }
+
+  insertAt(value, index) {
+    if (this.head === null) {
+      return;
+    }
+    if (index === 0) {
+      this.prepend(value);
+    }
+
+    let currentIndex = 1;
+    let currentNode = this.head.nextNode;
+    let prevNode = this.head;
+
+    while (currentIndex !== index && currentNode.nextNode !== null) {
+      currentIndex++;
+      currentNode = currentNode.nextNode;
+      prevNode = prevNode.nextNode;
+    }
+
+    if (currentIndex === index) {
+      const node = new Node(value);
+      node.nextNode = currentNode;
+      prevNode.nextNode = node;
+    }
+
+    // If the index is exactly one more than the last index, append to the end
+    if (currentNode.nextNode === null && index - currentIndex === 1) {
+      const node = new Node(value);
+      currentNode.nextNode = node;
+      node.nextNode = null;
+      return;
+    } else {
+      return console.log('wrong index');
+    }
   }
 }
 
@@ -151,4 +188,5 @@ console.log(list1.at(4));
 console.log(list1.contains('gata'));
 console.log(list1.find(52));
 console.log(list1.find('la caballota'));
+list1.insertAt('la patrona', 2);
 console.log(list1.toString());
