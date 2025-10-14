@@ -35,6 +35,10 @@ class LinkedList {
     count++;
     return count + this.size(currentNode.nextNode);
   }
+
+  headNode() {
+    return this.head;
+  }
 }
 
 class Node {
@@ -57,3 +61,4 @@ console.log(list1.head.nextNode);
 console.log(list1.head.nextNode.nextNode);
 console.log(list1.head.nextNode.nextNode.nextNode);
 console.log(list1.size());
+console.log(list1.headNode());
