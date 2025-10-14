@@ -82,6 +82,7 @@ class LinkedList {
     prevNode.nextNode = null;
   }
 
+  //Check if the given value exists or not
   contains(value) {
     if (this.head === null) {
       return false;
@@ -91,6 +92,21 @@ class LinkedList {
       currentNode = currentNode.nextNode;
     }
     return currentNode.value === value ? true : false;
+  }
+
+  find(value) {
+    if (this.head === null) {
+      return null;
+    }
+    let currentIndex = 0;
+    let currentNode = this.head;
+
+    while (currentNode.value !== value && currentNode.nextNode !== null) {
+      currentIndex++;
+      currentNode = currentNode.nextNode;
+    }
+
+    return currentNode.value === value ? currentIndex : null;
   }
 }
 
@@ -120,3 +136,5 @@ list1.pop();
 console.log(list1.tail());
 console.log(list1.at(4));
 console.log(list1.contains('gata'));
+console.log(list1.find(52));
+console.log(list1.find('la caballota'));
