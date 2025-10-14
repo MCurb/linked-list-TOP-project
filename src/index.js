@@ -90,11 +90,7 @@ class LinkedList {
     while (currentNode.value !== value && currentNode.nextNode !== null) {
       currentNode = currentNode.nextNode;
     }
-    if (currentNode.value === value) {
-      return true;
-    } else {
-      return false;
-    }
+    return currentNode.value === value ? true : false;
   }
 }
 
